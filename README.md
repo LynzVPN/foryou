@@ -1,0 +1,2 @@
+# foryou
+autoscriptvps

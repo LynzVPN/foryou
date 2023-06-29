@@ -4,9 +4,9 @@ echo "Checking VPS"
 clear
 cekray=`cat /root/log-install.txt | grep -ow "XRAY" | sort | uniq`
 if [ "$cekray" = "XRAY" ]; then
-domen=`cat /etc/xray/domain`
+domain=$(cat /etc/xray/domain)
 else
-domen=`cat /etc/v2ray/domain`
+domain=$IP
 fi
 portsshws=`cat ~/log-install.txt | grep -w "SSH Websocket" | cut -d: -f2 | awk '{print $1}'`
 wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
@@ -48,7 +48,7 @@ echo -e "Password   : $Pass"
 echo -e "Expired On : $exp"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "IP         : $IP"
-echo -e "Host       : $domen"
+echo -e "Host       : $domain"
 echo -e "OpenSSH    : $opensh"
 echo -e "Dropbear   : $db"
 echo -e "SSH WS     : $portsshws"
@@ -57,10 +57,10 @@ echo -e "SSL/TLS    :$ssl"
 echo -e "UDPGW      : 7100-7900"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Payload WSS"
-echo -e "GET wss://isi_bug_disini HTTP/1.1[crlf]Host: ${domen}[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET wss://isi_bug_disini HTTP/1.1[crlf]Host: ${domain}[crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Payload WS"
-echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET / HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
 else
@@ -73,7 +73,7 @@ echo -e "Password   : $Pass"
 echo -e "Expired On : $exp"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "IP         : $IP"
-echo -e "Host       : $domen"
+echo -e "Host       : $domain"
 echo -e "OpenSSH    : $opensh"
 echo -e "Dropbear   : $db"
 echo -e "SSH WS     : $portsshws"
@@ -82,10 +82,10 @@ echo -e "SSL/TLS    :$ssl"
 echo -e "UDPGW      : 7100-7900"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Payload WSS"
-echo -e "GET wss://isi_bug_disini HTTP/1.1[crlf]Host: ${domen}[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET wss://isi_bug_disini HTTP/1.1[crlf]Host: ${domain}[crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "Payload WS"
-echo -e "GET / HTTP/1.1[crlf]Host: $domen[crlf]Upgrade: websocket[crlf][crlf]"
+echo -e "GET / HTTP/1.1[crlf]Host: $domain[crlf]Upgrade: websocket[crlf][crlf]"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 fi
 echo ""
